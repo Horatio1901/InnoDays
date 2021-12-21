@@ -1,0 +1,68 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0-windows10.0.19041.0</TargetFramework>
+        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+        <UseWPF>true</UseWPF>
+        <OutputType>WinExe</OutputType>
+        <ApplicationIcon>EMC.ico</ApplicationIcon>
+        <StartupObject>ECU300.Server.Agent.App</StartupObject>
+    </PropertyGroup>
+    <ItemGroup>
+        <Compile Update="TaskbarIcon\Resources.Designer.cs">
+            <AutoGen>True</AutoGen>
+            <DesignTime>True</DesignTime>
+            <DependentUpon>Resources.resx</DependentUpon>
+        </Compile>
+        <Compile Update="AppResources.Designer.cs">
+            <AutoGen>True</AutoGen>
+            <DesignTime>True</DesignTime>
+            <DependentUpon>Resources.resx</DependentUpon>
+        </Compile>
+    </ItemGroup>
+    <ItemGroup>
+        <Resource Include="EMC.ico" />
+        <None Remove="ErrorNotifications\Close.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="ECU300.Server.Agent.log4net.config">
+            <SubType>Designer</SubType>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <None Include="FodyWeavers.xml" />
+        <Resource Include="TaskbarIcon\EMC_Transition.ico" />
+        <Resource Include="TaskbarIcon\EMC_Stopped.ico" />
+        <Resource Include="TaskbarIcon\EMC_Started.ico" />
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\ECU300.Foundation\ECU300.Foundation.csproj" />
+        <ProjectReference Include="..\ECU300.UI.Foundation\ECU300.UI.Foundation.csproj" />
+    </ItemGroup>
+    <ItemGroup>
+        <EmbeddedResource Update="AppResources.resx">
+            <Generator>PublicResXFileCodeGenerator</Generator>
+            <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+        </EmbeddedResource>
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Appccelerate.Bootstrapper" Version="3.0.0" />
+        <PackageReference Include="EmptyConstructor.Fody" Version="3.0.3" PrivateAssets="All">
+            <ExcludeAssets>runtime</ExcludeAssets>
+            <IncludeAssets>All</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Fody" Version="6.6.0">
+            <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+        <PackageReference Include="Hardcodet.NotifyIcon.Wpf" Version="1.1.0" />
+        <PackageReference Include="Microsoft.Toolkit.Uwp.Notifications" Version="7.1.2" />
+        <PackageReference Include="Ninject" Version="3.3.4" />
+        <PackageReference Include="PropertyChanged.Fody" Version="3.4.0" PrivateAssets="All">
+            <ExcludeAssets>runtime</ExcludeAssets>
+            <IncludeAssets>All</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Virtuosity.Fody" Version="3.1.1" PrivateAssets="All">
+            <ExcludeAssets>runtime</ExcludeAssets>
+            <IncludeAssets>All</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
+</Project>
